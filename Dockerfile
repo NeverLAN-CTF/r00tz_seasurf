@@ -1,13 +1,16 @@
 FROM richarvey/nginx-php-fpm
 
 MAINTAINER Connor Jones <nullbones4@gmail.com>
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -y upgrade && \
     apt-get -y install mysql-server && \
     apt-get -y install libmysqlclient-dev
 
 COPY dbinit.sql /root/
-RUN service mysql start && \
+RUN \
+    /bin/bash -c "usr/bin/mysqld_safe &" && \
+    sleep 5 && \
     mysql -u root < /root/dbinit.sql
 
 RUN echo "[include]" >> /etc/supervisord.conf && \
