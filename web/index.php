@@ -4,15 +4,22 @@
 	<br>
 	<h2>Please Login Below</h2>
 	<br>
-	<br>
-<form>
+    <br>
+
+    <?php
+    if (isset($_GET['error'])) {
+        echo("<h3>Either the username or password was incorrect.</h3>");
+    }
+    ?>
+
+<form action="login.php" method="POST">
 	<input type="text" name="username" class="textbox" placeholder="Username" />
 	<br>
 	<br>
 	<input type="password" class="textbox" name="password" placeholder="Password"  />  
 	<br>
 	<br>
-	<input type="SUBMIT" value="Login" />
+	<input type="submit" value="Login" />
 </form>
 <style>
 html { 
