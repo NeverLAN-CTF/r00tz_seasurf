@@ -10,7 +10,7 @@ CREATE TABLE users(
 INSERT INTO users (id, username, password, admin) VALUES
 (1, 'admin', '$2y$10$bPTZknRUBCGExuSrGvq8y.pO/pbtOlmuV5NNw.7D07z9HsDFEV8NK', 1);
 
-GRANT SELECT on seasurf.users to 'happy_hxar'@'localhost' identified by 'yajnidIcIsdedbobgeabcavDafQuioS';
+GRANT SELECT,INSERT on seasurf.users to 'happy_hxar'@'localhost' identified by 'yajnidIcIsdedbobgeabcavDafQuioS';
 
 USE mysql;
 UPDATE user set password=PASSWORD("damjebripujDefDeutAchcokEvbav2") where User='root';
