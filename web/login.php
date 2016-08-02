@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 // Redirect those that try to come directly to this page
 if (!isset($_POST['username']) || !isset($_POST['password'])) {

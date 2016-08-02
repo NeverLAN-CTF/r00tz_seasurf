@@ -4,11 +4,11 @@
 	<br>
 	<h2>Please Login Below</h2>
 	<br>
-    <br>
 
     <?php
     if (isset($_GET['error'])) {
-        echo("<h3>Either the username or password was incorrect.</h3>");
+        echo('<h3>Either the username or password was incorrect.</h3>');
+        echo('<p><a href="messages_send.php">Send administrator a message.</a></p>');
     }
     ?>
 
@@ -21,22 +21,21 @@
 	<br>
 	<input type="submit" value="Login" />
 </form>
+
 <style>
-html { 
-  background: url(images/ocean.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+html {
+    background: url(images/ocean.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.textbox { 
-    border: 3px outset #100; 
-    outline:0; 
-    height:25px; 
-    width: 275px; 
-  } 
-
-
+.textbox {
+    border: 3px outset #100;
+    outline:0;
+    height:25px;
+    width: 275px;
+}
 </style>
 
