@@ -1,0 +1,2 @@
+Disallow: /messages_send.php
+Disallow: /user_add.php?username=&password=&admin=&submit=submit
