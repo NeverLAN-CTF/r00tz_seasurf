@@ -19,7 +19,7 @@
 	<input type="password" class="textbox" name="password" placeholder="Password"  />  
 	<br>
 	<br>
-	<input type="submit" value="Login" />
+	<input type="submit" name="submit" value="Login" />
 </form>
 
 <style>

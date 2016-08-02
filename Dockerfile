@@ -2,10 +2,26 @@ FROM richarvey/nginx-php-fpm
 
 MAINTAINER Connor Jones <nullbones4@gmail.com>
 
+# https://github.com/fgrehm/docker-phantomjs2/blob/master/Dockerfile
+COPY dockerized-phantomjs.tbz /root/
+RUN \
+    cd / && \
+    tar xf /root/dockerized-phantomjs.tbz
+
 RUN apk update && \
     apk add mariadb && \
     apk add mariadb-client && \
-    apk add mariadb-dev
+    apk add mariadb-dev && \
+    apk add py-pip && \
+    apk add curl
+
+RUN pip install selenium
+
+RUN echo "[include]" >> /etc/supervisord.conf && \
+    echo "files = /etc/supervisor/conf.d/*.conf" >> /etc/supervisord.conf
+
+COPY mysql.conf /etc/supervisor/conf.d/
+COPY messages.conf /etc/supervisor/conf.d/
 
 COPY dbinit.sql /root/
 RUN \
@@ -14,10 +30,7 @@ RUN \
     sleep 5 && \
     mysql -u root < /root/dbinit.sql
 
-RUN echo "[include]" >> /etc/supervisord.conf && \
-    echo "files = /etc/supervisor/conf.d/*.conf" >> /etc/supervisord.conf
-
-COPY mysql.conf /etc/supervisor/conf.d/
+COPY messages.py /root/
 
 # setup nginx
 RUN \
@@ -27,4 +40,3 @@ RUN \
 
 COPY web /var/www/html
 
-RUN rm -rf /var/lib/apt/lists/*
