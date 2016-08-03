@@ -19,6 +19,7 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['admin'])) {
 <?php
 if ($_SESSION['admin'] === 1) {
     echo('CTF Flag: Nonce it and verify actions are authorized');
+    echo('WORD: Go to');
     echo('<p><a href="user_add.php">Add a new user</a></p>');
     echo('<p><a href="messages_view.php">View messages</a></p>');
 } else {
